@@ -12,51 +12,51 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class AnswerGeneratorTest {
     @Test
-    public void testIsFourDigit(){
+    public void testIsFourDigit() {
         AnswerGenerator ansGenerator = new AnswerGenerator();
         String generatedFourDigits = ansGenerator.answerGenerator();
 
         Boolean isValid = false;
 
-        if(generatedFourDigits.length() == 4){
+        if (generatedFourDigits.length() == 4) {
             isValid = true;
         }
-        assertThat(isValid,is(true));
+        assertThat(isValid, is(true));
 
     }
 
     @Test
-    public void testEachDigitIsNum(){
+    public void testEachDigitIsNum() {
         AnswerGenerator ansGenerator = new AnswerGenerator();
         String generatedFourDigits = ansGenerator.answerGenerator();
 
         Pattern pattern = Pattern.compile("[0-9]{4}");
         Boolean isEachDigitNum = pattern.matcher(generatedFourDigits).matches();
 
-        assertThat(isEachDigitNum,is(true));
+        assertThat(isEachDigitNum, is(true));
     }
 
     @Test
-    public void testEachDigitIsDifferentNum(){
+    public void testEachDigitIsDifferentNum() {
         AnswerGenerator ansGenerator = new AnswerGenerator();
         String generatedFourDigits = ansGenerator.answerGenerator();
 
-        String[]  generatedFourDigitsArray = generatedFourDigits.split("");
+        String[] generatedFourDigitsArray = generatedFourDigits.split("");
 
         int[] tags = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        Boolean  isEachDigitDifferentNum = true;
+        Boolean isEachDigitDifferentNum = true;
 
-        for(int i=0;i<generatedFourDigitsArray.length;i++){
+        for (int i = 0; i < generatedFourDigitsArray.length; i++) {
             int currentNum = Integer.parseInt(generatedFourDigitsArray[i]);
-            if(tags[currentNum] == 0){
+            if (tags[currentNum] == 0) {
                 tags[currentNum] = 1;
-            }else{
+            } else {
                 isEachDigitDifferentNum = false;
                 break;
             }
         }
 
-        assertThat(isEachDigitDifferentNum,is(true));
+        assertThat(isEachDigitDifferentNum, is(true));
     }
 }

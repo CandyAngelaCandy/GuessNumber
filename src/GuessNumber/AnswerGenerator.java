@@ -11,7 +11,7 @@ public class AnswerGenerator {
         int[] tags = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         Random r = new Random();
 
-        int temp ;
+        int temp;
         while (fourDigits.length() != 4) {
 
             temp = r.nextInt(10);//随机获取0~9的数字
